@@ -16,6 +16,7 @@
     "@supabase/supabase-js": "^2.47.12",
     "athlon-next": "file:",
     "axios": "^1.7.9",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "next": "15.1.4",
     "react": "^19.0.0",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/cors": "^2.8.17",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

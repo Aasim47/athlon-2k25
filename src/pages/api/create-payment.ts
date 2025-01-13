@@ -3,8 +3,8 @@
 import axios from "axios";
 import crypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
-
 import { NextApiRequest, NextApiResponse } from "next";
+import { cors, runMiddleware } from "@/utils/corsMiddleware";
 
 interface PaymentPayload {
   merchantId: string;
@@ -55,6 +55,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
+  await runMiddleware(req, res, cors);
+
   const { name, sic, year, tshirtSize, phone } = req.body;
   const orderId = uuidv4();
 

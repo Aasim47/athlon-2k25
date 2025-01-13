@@ -1,11 +1,14 @@
 import crypto from "crypto";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
+import { cors, runMiddleware } from "@/utils/corsMiddleware";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
+  await runMiddleware(req, res, cors);
+
   const { invoiceId } = req.query;
 
   if (!invoiceId || typeof invoiceId !== "string") {

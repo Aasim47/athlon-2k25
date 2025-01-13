@@ -6,12 +6,15 @@ import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { supabase } from "@/utils/supabase";
+import { cors, runMiddleware } from "@/utils/corsMiddleware";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
   // const merchantTransactionId = req.query.id;
+  await runMiddleware(req, res, cors);
+
   const {
     id: merchantTransactionId,
     name,
