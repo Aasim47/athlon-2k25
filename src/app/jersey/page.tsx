@@ -58,11 +58,21 @@ const Jersey = () => {
   };
   return (
     <div className="mt-8 mx-4 xl:mx-[5.5rem]">
-      <div className="mt-[6rem] bg-white shadow-md w-full h-[12rem] py-8 md:h-[40rem] relative">
+      <div className="hidden md:block mt-[6rem] bg-white shadow-md w-full h-[18rem] py-8 lg:h-[25rem] xl:h-[30rem] relative">
         <Image
           src={"/assets/Artboard 5-100.jpg"}
           alt="Picture of the author"
           layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      <div className="block md:hidden mt-[6rem] bg-white shadow-md w-full  md:h-[50rem] relative">
+        <Image
+          src={"/assets/Artboard 4-100.jpg"}
+          alt="Picture of the author"
+          // layout="fill"
+          width={400}
+          height={400}
           objectFit="cover"
         />
       </div>

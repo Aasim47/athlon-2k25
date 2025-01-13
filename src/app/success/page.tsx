@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 interface PaymentData {
   id: string;
@@ -14,7 +14,7 @@ interface PaymentData {
   datetime: string;
 }
 
-const Success = () => {
+const SuccessContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams ? searchParams.get("id") : null;
@@ -31,9 +31,7 @@ const Success = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(
-          `/api/check-payment-status?id=${id}`
-        )
+        .get(`/api/check-payment-status?id=${id}`)
         .then((response) => {
           if (response.data.status) {
             // setStatus("Payment successful");
@@ -128,6 +126,14 @@ const Success = () => {
         </Link>
       </div>
     </div>
+  );
+};
+
+const Success = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
   );
 };
 
