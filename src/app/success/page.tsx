@@ -23,7 +23,7 @@ const Success = () => {
   // const year = searchParams ? searchParams.get("year") : null;
   // const phone = searchParams ? searchParams.get("phone") : null;
   // const tshirtSize = searchParams ? searchParams.get("tshirtSize") : null;
-  const [status, setStatus] = useState<string | null>(null);
+  // const [status, setStatus] = useState<string | null>(null);
 
   const [paymentData, setPaymentData] = useState<PaymentData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -36,7 +36,7 @@ const Success = () => {
         )
         .then((response) => {
           if (response.data.status) {
-            setStatus("Payment successful");
+            // setStatus("Payment successful");
             setPaymentData({
               id: id,
               type: response.data.info.type,
@@ -57,7 +57,7 @@ const Success = () => {
         })
         .catch((error) => {
           console.error(error);
-          setStatus("Error checking payment status");
+          // setStatus("Error checking payment status");
         })
         .finally(() => {
           setLoading(false);

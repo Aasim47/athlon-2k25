@@ -46,7 +46,7 @@ interface PaymentResponse {
 
 interface ErrorResponse {
   response?: {
-    data?: any;
+    data?: Record<string, unknown>;
   };
   message?: string;
 }

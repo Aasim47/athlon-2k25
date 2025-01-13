@@ -43,21 +43,19 @@ export default async function handler(
   axios
     .request(option)
     .then(async (response) => {
-      const { data, error } = await supabase
-        .from("T-shirt registrations")
-        .insert([
-          {
-            name,
-            sic,
-            year,
-            phone,
-            tshirtSize,
-            paymentRefId: merchantTransactionId,
-            amount: response.data.data.amount / 100,
-            paymentMode: response.data.data.paymentInstrument.type,
-            success: response.data.success
-          }
-        ]);
+      await supabase.from("T-shirt registrations").insert([
+        {
+          name,
+          sic,
+          year,
+          phone,
+          tshirtSize,
+          paymentRefId: merchantTransactionId,
+          amount: response.data.data.amount / 100,
+          paymentMode: response.data.data.paymentInstrument.type,
+          success: response.data.success
+        }
+      ]);
       if (response.data.success === true) {
         // res.redirect(303,
         //   `https://www.google.com/`

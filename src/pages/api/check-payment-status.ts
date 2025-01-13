@@ -36,7 +36,7 @@ export default async function handler(
     const response = await axios.request(option);
     // console.log("Response status:", response.status);
     // console.log("Response headers:", response.headers);
-    console.log("Response data:", response.data);
+    // console.log("Response data:", response.data);
 
     if (response.data.success === true) {
       return res.status(200).json({
