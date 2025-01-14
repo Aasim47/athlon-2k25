@@ -495,7 +495,7 @@ export default function Home() {
 
       <div className=" bg-white px-8 xl:px-[5.5rem] py-8 text-white items-center flex justify-center">
         {/* <h1 className="text-[2rem] font-[600] text-center">Contact Us</h1> */}
-        <div className="flex flex-col sm:flex-row gap-2 overflow-x-auto hide-scrollbar">
+        <div className="flex flex-col sm:flex-row gap-2 md:overflow-x-auto hide-scrollbar">
           <div className="flex sm:flex-col gap-2 sm:gap-0">
             <div
               data-aos="fade-down"
@@ -620,8 +620,8 @@ export default function Home() {
       </div>
 
       <div className="bg-blue px-8 xl:px-[5.5rem] py-8 flex flex-col sm:flex-row items-center justify-between text-white">
-        <div className="lg:flex-1 flex flex-col sm:flex-row items-center justify-between">
-          <div className="flex gap-4 items-center md:flex-col lg:flex-row justify-center">
+        <div className="lg:w-[40%] flex flex-col sm:flex-row items-center justify-center">
+          <div className="flex gap-4 items-center md:flex-col lg:flex-row justify-around">
             <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem] flex items-center justify-center relative">
               <Image
                 src={"/assets/ssc-logo.svg"}
@@ -640,7 +640,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="lg:flex-1 flex justify-between flex-col lg:flex-row  mt-8 sm:mt-0">
+        <div className="lg:w-[60%] flex justify-between flex-col lg:flex-row  mt-8 sm:mt-0">
           {/* <div className="flex gap-2 items-center text-[1.25rem]">
             <LuMapPin />
             <p>Silicon Institute of Technology, Sambalpur</p>
