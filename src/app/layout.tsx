@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#eeeeee]`}
       >
         <nav className="bg-blue fixed top-0 w-full z-10 shadow-md">
-          <div className="p-4 px-6 flex justify-between items-center">
+          <div className="p-4 px-6 xl:px-[5.5rem] flex justify-between items-center">
             <p className="facon text-[1.5rem] m-0 p-0 leading-normal">
               <Link href={"/"}>ATHLON 2K25</Link>
             </p>

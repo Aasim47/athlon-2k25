@@ -15,8 +15,23 @@
   --blue: #1230ae;
 }
 
+/* body {
+  font-family: "Poppins", sans-serif;
+} */
 body {
   font-family: "Poppins", sans-serif;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  /* background: green; */
+  /* background: transparent;  */
 }
 
 .facon {
@@ -33,5 +48,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

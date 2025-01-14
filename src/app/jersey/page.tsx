@@ -1,61 +1,73 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import TextField from "@mui/material/TextField";
+import React, { useEffect } from "react";
+// import { useForm, Controller } from "react-hook-form";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { z } from "zod";
+// import TextField from "@mui/material/TextField";
 
-import Button from "@mui/material/Button";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup
-} from "@mui/material";
-import axios from "axios";
+// import Button from "@mui/material/Button";
+// import {
+//   FormControl,
+//   FormControlLabel,
+//   FormLabel,
+//   Radio,
+//   RadioGroup
+// } from "@mui/material";
+// import axios from "axios";
 
-const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  sic: z.string().min(1, "SIC is required"),
-  year: z.string().min(1, "Year is required"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  tshirtSize: z.string().min(1, "T-shirt size is required")
-});
+// const schema = z.object({
+//   name: z.string().min(1, "Name is required"),
+//   sic: z.string().min(1, "SIC is required"),
+//   year: z.string().min(1, "Year is required"),
+//   phone: z.string().min(10, "Phone number must be at least 10 digits"),
+//   tshirtSize: z.string().min(1, "T-shirt size is required")
+// });
 
-type FormData = z.infer<typeof schema>;
+// type FormData = z.infer<typeof schema>;
 
 const Jersey = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      name: "",
-      sic: "",
-      year: "",
-      phone: "",
-      tshirtSize: ""
+  // const {
+  //   control,
+  //   handleSubmit,
+  //   formState: { errors }
+  // } = useForm<FormData>({
+  //   resolver: zodResolver(schema),
+  //   defaultValues: {
+  //     name: "",
+  //     sic: "",
+  //     year: "",
+  //     phone: "",
+  //     tshirtSize: ""
+  //   }
+  // });
+
+  // const onSubmit = async (data: FormData) => {
+  //   console.log(data);
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:3000/api/create-payment",
+  //       data
+  //     );
+  //     console.log(response);
+  //     window.location.href = response.data.url;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  useEffect(() => {
+    const rzpPaymentForm = document.getElementById("rzp_payment_form");
+
+    if (rzpPaymentForm && !rzpPaymentForm.hasChildNodes()) {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.async = true;
+      script.dataset.payment_button_id = "pl_PjF7XDdDzpu6zL";
+      rzpPaymentForm.appendChild(script);
     }
   });
-
-  const onSubmit = async (data: FormData) => {
-    console.log(data);
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/create-payment",
-        data
-      );
-      console.log(response);
-      window.location.href = response.data.url;
-    } catch (err) {
-      console.error(err);
-    }
-  };
   return (
     <div className="mt-8 mx-4 xl:mx-[5.5rem]">
       <div className="hidden md:block mt-[6rem] bg-white shadow-md w-full h-[18rem] py-8 lg:h-[25rem] xl:h-[30rem] relative">
@@ -105,7 +117,12 @@ const Jersey = () => {
         <h3 className="text-[1.5rem] font-[600]">
           Fill out this form to book your T-shirt
         </h3>
-        <FormControl fullWidth>
+        <p className="mt-2">
+          Please fill out this Razorpay form to book your T-shirt. Once the form
+          is submitted, you will be redirected to the payment gateway to
+          complete the payment. Fill all the required deatils correctly.
+        </p>
+        {/* <FormControl fullWidth>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
             <div className="mb-4">
               <Controller
@@ -241,20 +258,7 @@ const Jersey = () => {
                 )}
               />
             </div>
-            {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl> */}
+           
 
             <hr />
             <div className="flex justify-between mt-6 text-slate-500">
@@ -266,8 +270,12 @@ const Jersey = () => {
                 Submit & Pay
               </Button>
             </div>
+           
           </form>
-        </FormControl>
+        </FormControl> */}
+        <div className="mt-4 flex items-center justify-center">
+          <form id="rzp_payment_form"></form>
+        </div>
       </div>
     </div>
   );
