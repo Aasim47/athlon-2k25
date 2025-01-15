@@ -93,12 +93,16 @@ const Jersey = () => {
         <ul className="mt-4 list-disc list-inside">
           <li className="relative pl-4">
             {/* <span className="absolute left-0 top-0 h-2 w-2 bg-black rounded-full mt-2"></span> */}
-            The cost of Athlon 2k25 T-shirt is <b>Rs. 350/-</b> (inc. of all
+            The cost of Athlon 2k25 T-shirt is <b>Rs. 320/-</b> (inc. of all
             taxes.)
           </li>
           <li className="relative pl-4">
             {/* <span className="absolute left-0 top-0 h-2 w-2 bg-black rounded-full mt-2"></span> */}
             Once the amount is paid, it is non-refundable.
+          </li>
+          <li className="relative pl-4">
+            In case of any issues with the event such as cancellation or
+            rescheduling, the amount will be refunded.
           </li>
           <li className="relative pl-4">
             {/* <span className="absolute left-0 top-0 h-2 w-2 bg-black rounded-full mt-2"></span> */}
