@@ -679,8 +679,8 @@ export default function Home() {
                 CONTACT
               </p>
               <p>
-                Sandeep Prusty (Sports Secretary) : +91 7008 123 456 <br />
-                Satyabrat Panigrahi (Secretary General) : +91 7008 123 456
+                Sandeep Prusty (Sports Secretary) : +917978699617 <br />
+                Satyabrat Panigrahi (Secretary General) : +917853998437
               </p>
             </div>
           </div>
