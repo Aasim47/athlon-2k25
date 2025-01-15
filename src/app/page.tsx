@@ -7,9 +7,13 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Drawer from "@mui/material/Drawer";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Home() {
+  const [openDrawer, setOpenDrawer] = useState(false);
+
   const events: {
     name: string;
     time: string;
@@ -20,196 +24,181 @@ export default function Home() {
       name: "100m Race(Boys)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/race.jpeg"
     },
+
     {
-      name: "100m Race(Boys)",
+      name: "200m Race(Boys)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/race(200m).jpg"
     },
     {
-      name: "100m Race(Boys)",
+      name: "400m Race(Boys)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/race(400m).jpeg"
     },
     {
-      name: "100m Race(Boys)",
+      name: "100m Race(Girls)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/race(girls).webp"
     },
     {
-      name: "100m Race(Boys)",
+      name: "High Jump(Boys)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/high-jump.jpg"
     },
     {
-      name: "100m Race(Boys)",
+      name: "High Jump(Girls)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/high-jump(girls).jpg"
     },
     {
-      name: "100m Race(Boys)",
+      name: "Long Jump(Boys)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/long-jump.avif"
     },
     {
-      name: "100m Race(Boys)",
+      name: "Long Jump(Girls)",
       time: "8:00 AM",
       venue: "Main Ground",
-      image:
-        "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
+      image: "/assets/long-jump(girls).png"
+    },
+    {
+      name: "Discus Throw(Boys)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/discus-throw.webp"
+    },
+    {
+      name: "Discus Throw(Girls)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/discus-throw(girls).webp"
+    },
+    {
+      name: "Shot Put(Boys)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/shot-put.avif"
+    },
+    {
+      name: "Shot Put(Girls)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/shot-put(girls).jpg"
+    },
+    {
+      name: "Relay race(Boys)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/relay.jpg"
+    },
+    {
+      name: "Relay race(Girls)",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/relay(girls).jpg"
+    },
+    {
+      name: "Tug of War",
+      time: "8:00 AM",
+      venue: "Main Ground",
+      image: "/assets/tug-of-war.jpg"
     }
   ];
 
-  const organizers: {
-    [key: string]: {
-      name: string;
-      image: string;
-      year: string;
-    }[];
-  } = {
-    "Track and Field": [
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      }
-    ],
-    "First-aid": [
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      }
-    ],
-    Jumping: [
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      }
-    ],
-    Throwing: [
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N",
-        year: "4th"
-      }
-    ]
-  };
+  const newOranizers: {
+    name: string;
+    image: string;
+    role: string;
+  }[] = [
+    {
+      name: "Dr. Mihir Hota",
+      image: "/assets/organizers/deam.jpg",
+      role: "Dean, Academics"
+    },
+    {
+      name: "Biresh Kumar Dakua",
+      image: "/assets/organizers/biresh.jpg",
+      role: "FIC, Sports Club"
+    },
+    {
+      name: "Deepak Sahoo",
+      image: "/assets/organizers/deepak.jpg",
+      role: "FC, Sports Club"
+    },
+    {
+      name: "Sampad Kumar Pradhan",
+      image: "/assets/organizers/sampad.jpg",
+      role: "SPOC, Sports Club"
+    },
+    {
+      name: "Sandeep Prusty",
+      image: "/assets/organizers/sandeep.jpg",
+      role: "Sports Secretary"
+    },
+    {
+      name: "Satyabrat Panigrahi",
+      image: "/assets/organizers/satya.jpg",
+      role: "Secretary General"
+    },
+    {
+      name: "Saswat Ranjan Pattnaik",
+      image: "/assets/organizers/saswat.jpg",
+      role: "Secretary Amenities"
+    },
+    {
+      name: "Deepika Rout",
+      image: "/assets/organizers/deepika.jpg",
+      role: "Assistant Sports Secretary"
+    },
+    {
+      name: "Gourahari Sahoo",
+      image: "/assets/organizers/gourahari.jpg",
+      role: "Sound and Media Head"
+    },
+    {
+      name: "Debasis Sahoo",
+      image: "/assets/organizers/debasis.jpg",
+      role: "Ground & Equipments"
+    },
+    {
+      name: "Soumyajeet Sahoo",
+      image: "/assets/organizers/somyajeet.jpg",
+      role: "Troop Head"
+    },
+    {
+      name: "Tapur Dey",
+      image: "/assets/organizers/tapur.jpg",
+      role: "Awards & Prizes"
+    },
+    {
+      name: "Prafful Pathak",
+      image: "/assets/organizers/prafful.jpg",
+      role: "Events & Competitions"
+    },
+    {
+      name: "Kalyan Mahapatra",
+      image: "/assets/organizers/kalyan.jpg",
+      role: "Refreshments"
+    },
+    {
+      name: "Ritesh Brahmachari",
+      image: "/assets/organizers/ritesh.jpg",
+      role: "First Aid"
+    },
+    {
+      name: "Somdev Behera",
+      image: "/assets/organizers/somdev.jpg",
+      role: "Design & software head"
+    }
+  ];
 
   useEffect(() => {
     AOS.init({
@@ -246,12 +235,28 @@ export default function Home() {
             The ultimate champions face up in the ultimate annual athletic meet
             2025.
           </p>
-          <Link href={"/jersey"} className="block w-fit" data-aos="fade-up">
-            <button className="mt-6 bg-blue rounded-xl px-6 py-3 text-white items-center flex gap-4 transition-all duration-300 hover:bg-white hover:text-blue hover:shadow-lg hover:gap-6">
-              <p className="font-[600]">Book your jersey</p>
-              <FaArrowRightLong className="transition-transform duration-300" />
-            </button>
-          </Link>
+          <div
+            className="flex flex-col md:flex-row mt-6 gap-4 md:items-center"
+            data-aos="fade-up"
+          >
+            <Link href={"/jersey"} className="block w-fit">
+              <button className=" bg-blue rounded-xl px-6 py-3 text-white items-center flex gap-4 transition-all duration-300 hover:bg-white hover:text-blue hover:shadow-lg hover:gap-6">
+                <p className="font-[600]">Book your jersey</p>
+                <FaArrowRightLong className="transition-transform duration-300" />
+              </button>
+            </Link>
+            <p
+              className="font-[600] flex items-center gap-2 text-[1.125rem] cursor-pointer ml-2 md:ml-0"
+              onClick={() => {
+                setOpenDrawer(true);
+              }}
+            >
+              Participate here
+              <span>
+                <FaArrowRightLong className="transition-transform duration-300" />
+              </span>
+            </p>
+          </div>
           <div
             className="flex gap-4 items-center text-[1.25rem] sm:text-[1.5rem] mt-6"
             data-aos="fade-up"
@@ -273,9 +278,7 @@ export default function Home() {
             className="absolute hidden sm:block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[10%] right-[30%] xl:top-[10%] xl:right-[24%] shadow-xl transition-transform duration-300 hover:translate-x-2"
           >
             <Image
-              src={
-                "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
-              }
+              src={"/assets/WhatsApp Image 2025-01-15 at 01.12.15_ca606c93.jpg"}
               layout="fill"
               objectFit="cover"
               className="rounded-xl"
@@ -287,9 +290,7 @@ export default function Home() {
             className="absolute sm:hidden block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 shadow-xl transition-transform duration-300 hover:translate-x-2"
           >
             <Image
-              src={
-                "https://images.theconversation.com/files/615514/original/file-20240826-20-9ywu2a.jpg?ixlib=rb-4.1.0&rect=156%2C423%2C3560%2C1777&q=45&auto=format&w=668&h=324&fit=crop"
-              }
+              src={"/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"}
               layout="fill"
               objectFit="cover"
               className="rounded-xl"
@@ -301,9 +302,7 @@ export default function Home() {
             className="absolute sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[36%%] right-[56%] xl:top-[36%] xl:right-[45%] shadow-xl transition-transform duration-300 hover:translate-x-2"
           >
             <Image
-              src={
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKHexW8zmCTSsWDVe0fftVrcZQTKvw2FEhTlbB001uLaiwsbtxoMHuM0g5As1U4XzOIiU&usqp=CAU"
-              }
+              src={"/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"}
               layout="fill"
               objectFit="cover"
               className="rounded-xl"
@@ -315,9 +314,7 @@ export default function Home() {
             className="absolute sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[24%] right-0 xl:top-[24%] xl:right-[4%] shadow-xl transition-transform duration-300 hover:-translate-x-2"
           >
             <Image
-              src={
-                "https://www.sportireland.ie/sites/default/files/styles/card/public/2022-12/Lucymull.jpg?h=1a5cb00f&itok=Djcryd8N"
-              }
+              src={"/assets/WhatsApp Image 2025-01-15 at 01.11.49_9ec62461.jpg"}
               layout="fill"
               objectFit="cover"
               className="rounded-xl"
@@ -329,9 +326,7 @@ export default function Home() {
             className="absolute hidden sm:block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[53%] right-[9%] xl:top-[53%] xl:right-[11%] shadow-xl transition-transform duration-300 hover:-translate-x-2"
           >
             <Image
-              src={
-                "https://i2-prod.irishmirror.ie/incoming/article30695458.ece/ALTERNATES/s615/2_inpho_02310494.jpg"
-              }
+              src={"/assets/WhatsApp Image 2025-01-15 at 01.11.50_706723a9.jpg"}
               layout="fill"
               objectFit="cover"
               className="rounded-xl"
@@ -372,9 +367,15 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white px-4 mt-12 md:mt-16 xl:mt-0 xl:px-[5.5rem] flex sm:flex-row flex-col items-center justify-between py-4 md:py-8 relative overflow-hidden">
+      <div
+        data-aos="fade-up"
+        className="bg-white px-4 mt-12 md:mt-16 xl:mt-0 xl:px-[5.5rem] flex sm:flex-row flex-col items-center justify-between py-4 md:py-8 relative overflow-hidden"
+      >
         <div className="w-[11rem] h-[9rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[3%] xl:right-[-5%] top-[3%] right-[-35%] lg:right-[-13%] lg:top-[-10%]"></div>
-        <div className="xl:flex-1 w-full md:w-[40%] flex items-center justify-center">
+        <div
+          data-aos="fade-up"
+          className="xl:flex-1 w-full md:w-[40%] flex items-center justify-center"
+        >
           <Image
             src={"/assets/ssc-logo.svg"}
             width={250}
@@ -382,33 +383,62 @@ export default function Home() {
             alt="ssc-logo"
           />
         </div>
-        <div className="xl:flex-1 text-black w-full md:w-[60%]">
+        <div
+          data-aos="fade-up"
+          className="xl:flex-1 text-black w-full md:w-[60%]"
+        >
           <p className="text-[1.5rem] font-[500]">ORGANIZED BY</p>
           <h1 className="text-[2.5rem] font-[600]">SILICON SPORTS CLUB</h1>
           <p className="mt-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias iure
-            dignissimos sequi dolorum eaque, consequatur maxime delectus, saepe
-            aliquam quibusdam autem quisquam ullam perspiciatis aperiam
-            consectetur. Dolorum ea blanditiis labore, veritatis odio molestias
-            error magni rerum perspiciatis iure vitae, corporis similique? Culpa
-            facere consequuntur architecto at, optio laboriosam adipisci eius?
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Reiciendis, molestiae ratione? Deleniti voluptatibus ipsa velit eum
-            debitis optio perspiciatis culpa.
+            The annual athletic meet of Silicon Institute of Technology,
+            Sambalpur (ATHLON) is the most awaited atheletic event of the year.
+            The event is organized by the Silicon Sports Club, the official
+            sports club of the institute. Every year the event host a wide range
+            of sports and games, and the champions are awarded with the
+            prestigious trophies and medals. The event is a platform for the
+            students to showcase their sportsmanship and athletic skills. The
+            event is a blend of sports, music, dance and fun. This year the 13th
+            edition of ATHLON is scheduled to be held on 8th February, 2025.
           </p>
         </div>
       </div>
-
-      <div className="bg-[#eeeeee] py-8 text-black sm:px-8 xl:px-[5.5rem] px-8 items-center justify-center flex flex-col relative">
-        <h1 data-aos="fade-up" className="text-[2rem] font-[600] text-center">
-          EVENTS
-        </h1>
+      <div className=" xl:px-[5.5rem] flex flex-col items-center p-8 md::p-0 relative overflow-hidden text-black justify-center">
+        <h1 className="text-[2rem] font-[600] text-center">ORGANIZERS</h1>
+        <div className="w-[16rem] h-[12rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:right-[-9%] top-[-15%] right-[-50%] lg:right-[-20%] "></div>
+        <div className="grid xl:grid-cols-4 xl:grid-rows-4 md:grid-cols-2 md:grid-rows-6 grid-cols-1 gap-2 md:gap-4 xl:gap-8 items-center justify-around sm:justify-evenly w-full mt-8 z-9">
+          {newOranizers.map((organizer, index) => {
+            return (
+              <div
+                data-aos="fade-up"
+                className="flex items-center xl:mt-4 h-[5.5rem] bg-[#F8FAFC] shadow-lg w-full"
+                key={index}
+              >
+                <div className="w-[5.5rem] h-[5.5rem] relative overflow-hidden md:p-2 xl:p-0">
+                  <Image
+                    src={organizer.image}
+                    layout="fill"
+                    objectFit="cover"
+                    className="shadow-lg"
+                    alt="organizer"
+                  />
+                </div>
+                <div className="ml-3">
+                  <p className="text-[1.15rem] font-[600]">{organizer.name}</p>
+                  <p className="text-[1rem]">{organizer.role}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="bg-[#ffffff] overflow-clip py-8 text-black sm:px-8 xl:px-[5.5rem] px-8 items-center justify-center flex flex-col relative">
+        <h1 className="text-[2rem] font-[600] text-center">EVENTS</h1>
         <div className="w-[16rem] h-[12rem] bg-transparent border-blue border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:left-[-9%] left-[-55%] top-[3%] lg:top-[4%] lg:right-[20%]"></div>
-        <div className="mt-8 grid grid-col-1 md:grid-cols-3 xl:grid-cols-4 gap-12 w-full xl:w-auto">
+        <div className=" mt-8 grid grid-col-1 md:grid-cols-3 xl:grid-cols-5 gap-12 w-full xl:w-auto">
           {events.map((event, index) => {
             return (
               <div
-                className="sm:w-[14rem] w-full h-[18rem] rounded-lg shadow-lg relative group cursor-pointer"
+                className="sm:w-[14rem] w-full h-[18rem] shadow-xl relative group cursor-pointer overflow-hidden"
                 key={index}
                 data-aos="flip-right"
               >
@@ -416,52 +446,15 @@ export default function Home() {
                   src={event.image}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-xl"
+                  className=" group-hover:scale-110 transition-transform duration-300"
                   alt="event"
                 />
-                <div className="bg-white opacity-0 group-hover:opacity-70 w-full h-[40%] absolute text-left bottom-0 p-4 rounded-b-lg transition-opacity duration-300">
+                <div className="bg-white opacity-0 group-hover:opacity-70 w-full h-[40%] absolute text-left bottom-0 p-4  transition-opacity duration-300">
                   <p className="text-black font-[600] text-[1.25rem]">
                     {event.name}
                   </p>
                   <p className="text-black font-[600]">8th Feb, {event.time}</p>
                   <p className="text-black font-[600]">{event.venue}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="bg-white xl:px-[5.5rem] flex flex-col items-center sm:py-8 p-4 sm:p-0 relative overflow-hidden text-black justify-center">
-        <h1 className="text-[2rem] font-[600] text-center">ORGANIZERS</h1>
-        <div className="w-[16rem] h-[12rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:right-[-9%] top-[-15%] right-[-50%] lg:right-[-20%]"></div>
-        <div className="flex flex-wrap gap-8 items-center justify-around sm:justify-evenly w-full mt-8">
-          {Object.keys(organizers).map((key, index) => {
-            return (
-              <div className="" key={index}>
-                <h1 className="text-[1.25rem] font-[600]">{key}</h1>
-                <div className="">
-                  {organizers[key].map((organizer, index) => {
-                    return (
-                      <div className="flex items-center gap-4 mt-4" key={index}>
-                        <div className="w-[3rem] h-[3rem] relative rounded-full overflow-hidden">
-                          <Image
-                            src={organizer.image}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-full"
-                            alt="organizer"
-                          />
-                        </div>
-                        <div>
-                          <p className="text-[1.15rem] font-[600]">
-                            {organizer.name}
-                          </p>
-                          <p className="text-[1rem]">{organizer.year} Year</p>
-                        </div>
-                      </div>
-                    );
-                  })}
                 </div>
               </div>
             );
@@ -503,7 +496,7 @@ export default function Home() {
             >
               <Image
                 src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  "/assets/WhatsApp Image 2025-01-15 at 12.45.29_d1e5b5d9.jpg"
                 }
                 objectFit="cover"
                 layout="fill"
@@ -512,12 +505,13 @@ export default function Home() {
             </div>
             <div
               data-aos="fade-up"
-              className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2"
+              className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-clip"
             >
               <Image
                 src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  "/assets/WhatsApp Image 2025-01-15 at 15.22.58_b94fc2ff.jpg"
                 }
+                className="scale-150"
                 objectFit="cover"
                 layout="fill"
                 alt="contact"
@@ -539,7 +533,7 @@ export default function Home() {
             >
               <Image
                 src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  "/assets/WhatsApp Image 2025-01-15 at 01.11.48_6213fea4.jpg"
                 }
                 objectFit="cover"
                 layout="fill"
@@ -554,7 +548,7 @@ export default function Home() {
             >
               <Image
                 src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  "/assets/WhatsApp Image 2025-01-15 at 10.26.12_d76a4ede.jpg"
                 }
                 objectFit="cover"
                 layout="fill"
@@ -566,7 +560,7 @@ export default function Home() {
               className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative bg-blue p-2 sm:mt-2"
             >
               <p className="font-[600] text-[1.5rem] lg:text-[2rem]">
-                Extensive range of sports and games
+                Carry the torch foreward
               </p>
             </div>
           </div>
@@ -576,7 +570,7 @@ export default function Home() {
               className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative bg-blue p-2"
             >
               <p className="font-[600] text-[1.5rem] lg:text-[2rem]">
-                Extensive range of sports and games
+                Enjoy the evening with music and dance
               </p>
             </div>
             <div
@@ -584,9 +578,7 @@ export default function Home() {
               className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2"
             >
               <Image
-                src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                }
+                src={"/assets/party.jpg"}
                 objectFit="cover"
                 layout="fill"
                 alt="contact"
@@ -600,7 +592,7 @@ export default function Home() {
             >
               <Image
                 src={
-                  "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  "/assets/WhatsApp Image 2025-01-15 at 01.12.16_1929ac55.jpg"
                 }
                 objectFit="cover"
                 layout="fill"
@@ -612,7 +604,7 @@ export default function Home() {
               className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative bg-blue p-2 sm:mt-2"
             >
               <p className="font-[600] text-[1.5rem] lg:text-[2rem]">
-                Extensive range of sports and games
+                Refreshments and dance
               </p>
             </div>
           </div>
@@ -670,6 +662,33 @@ export default function Home() {
           &copy; 2025 Silicon Sports Club. All Rights Reserved.
         </p>
       </div>
+
+      <Drawer
+        anchor="right"
+        open={openDrawer}
+        onClose={() => {
+          setOpenDrawer(false);
+        }}
+        className="bg-[#eeeeee]"
+        variant="temporary"
+      >
+        <div className="relative">
+          <button
+            className=" text-black m-4"
+            onClick={() => setOpenDrawer(false)}
+          >
+            <RxCross2 className="text-[1.5rem]" />
+          </button>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSclLfbRVTm1KeyuLHzMzmdL1s_7-kxSlld2U2DhW7OcHITNkQ/viewform?embedded=true"
+            width="100%"
+            height="100%"
+            style={{ minHeight: "1440px", minWidth: "100%" }}
+          >
+            Loading…
+          </iframe>
+        </div>
+      </Drawer>
     </div>
   );
 }
