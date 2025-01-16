@@ -44,6 +44,7 @@ export default function Home() {
   return (
     <div className="">
       <div className={`${isSidebarOpen ? "overflow-hidden h-screen" : ""}`}>
+
         <div className="h-full lg:h-[50dvh]  xl:h-[90dvh] mt-[6rem] xl:mt-16 bg-[#eeeeee] px-4 sm:px-8 xl:px-[5.5rem] block lg:flex sm:flex-row flex-col items-center justify-center">
           <div className="text-black flex-1">
             <p
@@ -248,11 +249,12 @@ export default function Home() {
               the prestigious trophies and medals. The event is a platform for
               the students to showcase their sportsmanship and athletic skills.
               The event is a blend of sports, music, dance and fun. This year
-              the 13th edition of ATHLON is scheduled to be held on 8th
+              the 14th edition of ATHLON is scheduled to be held on 8th
               February, 2025.
             </p>
           </div>
         </div>
+
         <div className=" xl:px-[5.5rem] flex flex-col items-center p-8 md::p-0 relative overflow-hidden text-black justify-center">
           <h1 className="text-[2rem] font-[600] text-center">ORGANIZERS</h1>
           <div className="w-[16rem] h-[12rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:right-[-9%] top-[-15%] right-[-50%] lg:right-[-20%] "></div>
@@ -284,6 +286,7 @@ export default function Home() {
             })}
           </div>
         </div>
+
         <div className="bg-[#ffffff] overflow-clip py-8 text-black sm:px-8 xl:px-[5.5rem] px-8 items-center justify-center flex flex-col relative">
           <h1 className="text-[2rem] font-[600] text-center">EVENTS</h1>
           <div className="w-[16rem] h-[12rem] bg-transparent border-blue border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:left-[-9%] left-[-55%] top-[3%] lg:top-[4%] lg:right-[20%]"></div>
