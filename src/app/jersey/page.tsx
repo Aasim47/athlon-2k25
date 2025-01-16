@@ -88,7 +88,7 @@ const Jersey = () => {
           objectFit="cover"
         />
       </div>
-      <div className="mt-4 bg-white shadow-md w-full p-8 text-black">
+      <div className="mt-4 bg-white shadow-md w-full p-4 sm:p-8 text-black">
         <p className="text-[1.25rem] font-[600]">ATHLON 2k25 Jersey</p>
         <ul className="mt-4 list-disc list-inside">
           <li className="relative pl-4">
@@ -117,7 +117,7 @@ const Jersey = () => {
         </ul>
       </div>
 
-      <div className="bg-white shadow-md mt-4 w-full p-8 text-black mb-4">
+      <div className="bg-white shadow-md mt-4 w-full p-4 sm:p-8 text-black mb-4">
         <h3 className="text-[1.5rem] font-[600]">
           Fill out this form to book your T-shirt
         </h3>

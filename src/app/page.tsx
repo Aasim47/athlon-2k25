@@ -3,220 +3,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaArrowUp, FaRegCalendarAlt } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSidebar } from "./components/SidebarContext";
+import { organizers } from "./utils/organizers";
+import { events } from "./utils/events";
 
 export default function Home() {
   const { isSidebarOpen, toggleSidebar } = useSidebar();
-
-  const events: {
-    name: string;
-    time: string;
-    venue: string;
-    image: string;
-  }[] = [
-    {
-      name: "100m Race(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/race.jpeg"
-    },
-
-    {
-      name: "200m Race(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/race(200m).jpg"
-    },
-    {
-      name: "400m Race(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/race(400m).jpeg"
-    },
-    {
-      name: "100m Race(Girls)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/race(girls).webp"
-    },
-    {
-      name: "200m Race(Girls)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/race-girls(200m).webp"
-    },
-    {
-      name: "High Jump(Boys)",
-      time: "8:00 AM",
-      venue: "Volley-ball Ground",
-      image: "/assets/high-jump.jpg"
-    },
-
-    {
-      name: "Long Jump(Boys)",
-      time: "8:00 AM",
-      venue: "Volley-ball Ground",
-      image: "/assets/long-jump.avif"
-    },
-    {
-      name: "Long Jump(Girls)",
-      time: "8:00 AM",
-      venue: "Volley-ball Ground",
-      image: "/assets/long-jump(girls).png"
-    },
-    {
-      name: "Discus Throw(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/discus-throw.webp"
-    },
-    {
-      name: "Discus Throw(Girls)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/discus-throw(girls).webp"
-    },
-    {
-      name: "Shot Put(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/shot-put.avif"
-    },
-    {
-      name: "Shot Put(Girls)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/shot-put(girls).jpg"
-    },
-    {
-      name: "Relay race(Boys)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/relay.jpg"
-    },
-    {
-      name: "Relay race(Girls)",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/relay(girls).jpg"
-    },
-    {
-      name: "Tug of War",
-      time: "8:00 AM",
-      venue: "Silicon Ground",
-      image: "/assets/tug-of-war.jpg"
-    }
-  ];
-
-  const newOranizers: {
-    name: string;
-    image: string;
-    role: string;
-  }[] = [
-    {
-      name: "Dr. Mihir Hota",
-      image: "/assets/organizers/deam.jpg",
-      role: "Dean, Academics"
-    },
-    {
-      name: "Biresh Kumar Dakua",
-      image: "/assets/organizers/biresh.jpg",
-      role: "FIC, Sports Club"
-    },
-    {
-      name: "Deepak Sahoo",
-      image: "/assets/organizers/deepak.jpg",
-      role: "FC, Sports Club"
-    },
-    {
-      name: "Sampad Kumar Pradhan",
-      image: "/assets/organizers/sampad.jpg",
-      role: "SPOC, Sports Club"
-    },
-    {
-      name: "Sandeep Prusty",
-      image: "/assets/organizers/sandeep.jpg",
-      role: "Sports Secretary"
-    },
-    {
-      name: "Satyabrat Panigrahi",
-      image: "/assets/organizers/satya.jpg",
-      role: "Secretary General"
-    },
-    {
-      name: "Saswat Ranjan Pattnaik",
-      image: "/assets/organizers/saswat.jpg",
-      role: "Secretary Amenities"
-    },
-    {
-      name: "Deepika Rout",
-      image: "/assets/organizers/deepika.jpg",
-      role: "Assistant Sports Secretary"
-    },
-    {
-      name: "Gourahari Sahoo",
-      image: "/assets/organizers/gourahari.jpg",
-      role: "Sound and Media Head"
-    },
-    {
-      name: "Debasis Sahoo",
-      image: "/assets/organizers/debasis.jpg",
-      role: "Ground & Equipments"
-    },
-    {
-      name: "Soumyajeet Sahoo",
-      image: "/assets/organizers/somyajeet.jpg",
-      role: "Troop Head"
-    },
-    {
-      name: "Tapur Dey",
-      image: "/assets/organizers/tapur.jpg",
-      role: "Awards & Prizes"
-    },
-    {
-      name: "Prafful Pathak",
-      image: "/assets/organizers/prafful.jpg",
-      role: "Events & Competitions"
-    },
-    {
-      name: "Kalyan Mahapatra",
-      image: "/assets/organizers/kalyan.jpg",
-      role: "Refreshments"
-    },
-    {
-      name: "Ritesh Brahmachari",
-      image: "/assets/organizers/ritesh.jpg",
-      role: "First Aid"
-    },
-    {
-      name: "Somdev Behera",
-      image: "/assets/organizers/somdev.jpg",
-      role: "Design & software head"
-    }
-  ];
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true
     });
+
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="">
-      <div
-        className={`${isSidebarOpen ? "overflow-hidden h-screen" : ""}`}
-        // onClick={() => {
-        //   if (isSidebarOpen) {
-        //     toggleSidebar();
-        //   }
-        // }}
-      >
+      <div className={`${isSidebarOpen ? "overflow-hidden h-screen" : ""}`}>
         <div className="h-full lg:h-[50dvh]  xl:h-[90dvh] mt-[6rem] xl:mt-16 bg-[#eeeeee] px-4 sm:px-8 xl:px-[5.5rem] block lg:flex sm:flex-row flex-col items-center justify-center">
           <div className="text-black flex-1">
             <p
@@ -430,7 +257,7 @@ export default function Home() {
           <h1 className="text-[2rem] font-[600] text-center">ORGANIZERS</h1>
           <div className="w-[16rem] h-[12rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:right-[-9%] top-[-15%] right-[-50%] lg:right-[-20%] "></div>
           <div className="grid xl:grid-cols-4 xl:grid-rows-4 md:grid-cols-2 md:grid-rows-6 grid-cols-1 gap-2 md:gap-4 xl:gap-8 items-center justify-around sm:justify-evenly w-full my-8 z-9">
-            {newOranizers.map((organizer, index) => {
+            {organizers.map((organizer, index) => {
               return (
                 <div
                   data-aos="fade-up"
@@ -475,13 +302,11 @@ export default function Home() {
                     className=" group-hover:scale-110 transition-transform duration-300"
                     alt="event"
                   />
-                  <div className="bg-white opacity-0 group-hover:opacity-70 w-full h-[40%] absolute text-left bottom-0 p-4  transition-opacity duration-300">
+                  <div className="bg-white opacity-70 w-full h-[40%] absolute text-left bottom-0 p-4  transition-opacity duration-300">
                     <p className="text-black font-[600] text-[1.25rem]">
                       {event.name}
                     </p>
-                    {/* <p className="text-black font-[600]">
-                      8th Feb, {event.time}
-                    </p> */}
+
                     <p className="text-black font-[600]">{event.venue}</p>
                   </div>
                 </div>
@@ -515,12 +340,11 @@ export default function Home() {
         </div>
 
         <div className=" bg-white px-8 xl:px-[5.5rem] py-8 text-white items-center flex justify-center overflow-hidden">
-          {/* <h1 className="text-[2rem] font-[600] text-center">Contact Us</h1> */}
           <div className="flex flex-col sm:flex-row gap-2 md:overflow-x-auto hide-scrollbar">
             <div className="flex sm:flex-col gap-2 sm:gap-0">
               <div
                 data-aos="fade-down"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative"
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
                   src={
@@ -528,18 +352,19 @@ export default function Home() {
                   }
                   objectFit="cover"
                   layout="fill"
+                  className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
               </div>
               <div
                 data-aos="fade-up"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-clip"
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 15.22.58_b94fc2ff.jpg"
                   }
-                  className="scale-150"
+                  className=" transition-transform duration-300 hover:scale-110"
                   objectFit="cover"
                   layout="fill"
                   alt="contact"
@@ -557,7 +382,7 @@ export default function Home() {
               </div>
               <div
                 data-aos="fade-up-right"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2"
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
                   src={
@@ -565,6 +390,7 @@ export default function Home() {
                   }
                   objectFit="cover"
                   layout="fill"
+                  className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
               </div>
@@ -572,7 +398,7 @@ export default function Home() {
             <div className="flex sm:flex-col gap-2 sm:gap-0">
               <div
                 data-aos="fade-down-left"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative"
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
                   src={
@@ -580,6 +406,7 @@ export default function Home() {
                   }
                   objectFit="cover"
                   layout="fill"
+                  className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
               </div>
@@ -588,7 +415,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative bg-blue p-2 sm:mt-2"
               >
                 <p className="font-[600] text-[1.5rem] lg:text-[2rem]">
-                  Carry the torch foreward
+                  Carry the athletic sprit with the torch forward
                 </p>
               </div>
             </div>
@@ -603,12 +430,13 @@ export default function Home() {
               </div>
               <div
                 data-aos="fade-up-right"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2"
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
                   src={"/assets/party.jpg"}
                   objectFit="cover"
                   layout="fill"
+                  className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
               </div>
@@ -616,7 +444,7 @@ export default function Home() {
             <div className="flex sm:flex-col gap-2 sm:gap-0">
               <div
                 data-aos="fade-down-left"
-                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative "
+                className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
                   src={
@@ -624,6 +452,7 @@ export default function Home() {
                   }
                   objectFit="cover"
                   layout="fill"
+                  className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
               </div>
@@ -680,7 +509,8 @@ export default function Home() {
               </p>
               <p>
                 Sandeep Prusty (Sports Secretary) : +917978699617 <br />
-                Satyabrat Panigrahi (Secretary General) : +917853998437
+                Satyabrat Panigrahi (Secretary General) : +917853998437 <br />
+                Saswat Ranjan Pattnaik (Secretary Amenities) : +918249097228
               </p>
             </div>
           </div>
@@ -691,6 +521,15 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      {showScrollToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 bg-blue text-white p-3 rounded-full shadow-lg hover:bg-dark-blue transition-colors duration-300"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </div>
   );
 }
