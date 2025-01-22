@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="ironeutXhmCnTSBbPPyeJKxKZTWhqypUM8ssFKquPz8" />
+      </head>
       <body className="antialiased bg-[#eeeeee]">
         <Suspense fallback={<Loading />}>
           <SidebarProvider>
