@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Script from "next/script";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "ATHLON 2K25",
@@ -79,6 +80,65 @@ export default function RootLayout({
                   </div>
                 </nav>
                 {children}
+                <footer>
+                  <div className="bg-blue px-8 xl:px-[5.5rem] py-8 flex flex-col sm:flex-row items-center justify-between text-white">
+                    <div className=" flex flex-col sm:flex-row items-center justify-center">
+                      <div className="flex gap-4 items-center md:flex-col lg:flex-row justify-around">
+                        <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem] flex items-center justify-center relative">
+                          <Image
+                            loading="lazy"
+                            src={"/assets/ssc-logo.svg"}
+                            style={{ objectFit: "cover" }}
+                            fill
+                            alt="ssc-logo"
+                          />
+                        </div>
+
+                        <div className="lg:w-[13rem] lg:h-[5rem] w-[10rem] h-[4rem] flex items-center justify-center md:mt-4 lg:mt-0 relative">
+                          <Image
+                            src="/assets/silicon-logo.png"
+                            className="w-full h-full"
+                            alt="silicon-logo"
+                            // layout="fill"
+                            fill
+                            // objectFit="cover"
+                            style={{ objectFit: "cover" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className=" flex xl:gap-12 flex-col lg:flex-row  mt-8 sm:mt-0">
+                      <div className="">
+                        <p className="font-[600] text-[1.25rem] underline">
+                          VENUE
+                        </p>
+                        <p className=" mt-2">
+                          Silicon Institute of Technology <br />
+                          Silicon West, Sason, Sambalpur, Odisha <br />
+                          Pin: 768200
+                        </p>
+                      </div>
+                      <div className="mt-4 sm:mt-0">
+                        <p className="font-[600] text-[1.25rem] underline md:mt-2 xl:mt-0">
+                          CONTACT
+                        </p>
+                        <p className="mt-2">
+                          Sandeep Prusty (Sports Secretary) : +917978699617{" "}
+                          <br />
+                          Satyabrat Panigrahi (Secretary General) :
+                          +917853998437 <br />
+                          Saswat Ranjan Pattnaik (Secretary Amenities) :
+                          +918249097228
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-black py-2">
+                    <p className="text-white text-center text-[0.75rem]">
+                      &copy; 2025 Silicon Sports Club. All Rights Reserved.
+                    </p>
+                  </div>
+                </footer>
               </div>
             </div>
           </SidebarProvider>

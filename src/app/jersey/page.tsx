@@ -21,18 +21,18 @@ const Jersey = () => {
         <Image
           src={"/assets/Artboard 5-100.jpg"}
           alt="Picture of the author"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
         />
       </div>
       <div className="block md:hidden mt-[6rem] bg-white shadow-md w-full  md:h-[50rem] relative">
         <Image
           src={"/assets/Artboard 4-100.jpg"}
           alt="Picture of the author"
-          // layout="fill"
+          // fill
           width={400}
           height={400}
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
         />
       </div>
       <div className="mt-4 bg-white shadow-md w-full p-4 sm:p-8 text-black">

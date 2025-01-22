@@ -58,13 +58,13 @@ export default function Home() {
                 <span className="text-blue">H</span>
                 LON
               </h1>
-              <h2 className="text-[4rem]" data-aos="fade-up">
+              <h2 className="text-[4rem] leading-[normal]" data-aos="fade-up">
                 2<span className="text-blue">K</span>
                 25
               </h2>
             </div>
             <p
-              className="text-[1.25rem] sm:text-[1.5rem] font-[600]"
+              className="text-[1.25rem] sm:text-[1.5rem] font-[600] mt-4"
               data-aos="fade-up"
             >
               The ultimate champions face up in the ultimate annual athletic
@@ -117,8 +117,8 @@ export default function Home() {
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.15_ca606c93.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-1"
               />
@@ -132,8 +132,8 @@ export default function Home() {
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-1"
               />
@@ -147,8 +147,8 @@ export default function Home() {
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-2"
               />
@@ -162,8 +162,8 @@ export default function Home() {
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.11.49_9ec62461.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-3"
               />
@@ -177,8 +177,8 @@ export default function Home() {
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.11.50_706723a9.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-4"
               />
@@ -192,8 +192,8 @@ export default function Home() {
                 src={
                   "https://i2-prod.irishmirror.ie/incoming/article30695458.ece/ALTERNATES/s615/2_inpho_02310494.jpg"
                 }
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="rounded-xl"
                 alt="sport-4"
               />
@@ -263,10 +263,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" xl:px-[5.5rem] flex flex-col items-center p-8 md::p-0 relative overflow-hidden text-black justify-center">
+        <div className=" xl:px-[5.5rem] flex flex-col items-center p-4 md::p-0 relative overflow-hidden text-black justify-center">
           <h1 className="text-[2rem] font-[600] text-center">ORGANIZERS</h1>
           <div className="w-[16rem] h-[12rem] bg-transparent border-[#EEDF04] border-solid border-[5px] absolute rounded-xl xl:top-[-6%] xl:right-[-9%] top-[-15%] right-[-50%] lg:right-[-20%] "></div>
-          <div className="grid xl:grid-cols-4 xl:grid-rows-4 md:grid-cols-2 md:grid-rows-6 grid-cols-1 gap-2 md:gap-4 xl:gap-8 items-center justify-around sm:justify-evenly w-full my-8 z-9">
+          <div className="grid xl:grid-cols-4 xl:grid-rows-4 md:grid-cols-2 md:grid-rows-6 grid-cols-1 gap-4 md:gap-4 xl:gap-8 items-center justify-around sm:justify-evenly w-full my-8 z-9">
             {organizers.map((organizer, index) => {
               return (
                 <div
@@ -278,8 +278,8 @@ export default function Home() {
                     <Image
                       loading="lazy"
                       src={organizer.image}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: "cover" }}
                       className="shadow-lg"
                       alt="organizer"
                     />
@@ -310,8 +310,8 @@ export default function Home() {
                   <Image
                     loading="lazy"
                     src={event.image}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: "cover" }}
                     className=" group-hover:scale-110 transition-transform duration-300"
                     alt="event"
                   />
@@ -364,8 +364,8 @@ export default function Home() {
                   src={
                     "/assets/WhatsApp Image 2025-01-13 at 23.56.34_822d6132.jpg"
                   }
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
@@ -380,8 +380,8 @@ export default function Home() {
                     "/assets/WhatsApp Image 2025-01-15 at 15.22.58_b94fc2ff.jpg"
                   }
                   className=" transition-transform duration-300 hover:scale-110"
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   alt="contact"
                 />
               </div>
@@ -404,8 +404,8 @@ export default function Home() {
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 01.11.48_6213fea4.jpg"
                   }
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
@@ -421,8 +421,8 @@ export default function Home() {
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 10.26.12_d76a4ede.jpg"
                   }
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
@@ -452,8 +452,8 @@ export default function Home() {
                 <Image
                   loading="lazy"
                   src={"/assets/party.jpg"}
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
@@ -469,8 +469,8 @@ export default function Home() {
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 01.12.16_1929ac55.jpg"
                   }
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   className="transition-transform duration-300 hover:scale-110"
                   alt="contact"
                 />
@@ -487,15 +487,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-blue px-8 xl:px-[5.5rem] py-8 flex flex-col sm:flex-row items-center justify-between text-white">
+        {/* <div className="bg-blue px-8 xl:px-[5.5rem] py-8 flex flex-col sm:flex-row items-center justify-between text-white">
           <div className="lg:w-[40%] flex flex-col sm:flex-row items-center justify-center">
             <div className="flex gap-4 items-center md:flex-col lg:flex-row justify-around">
               <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem] flex items-center justify-center relative">
                 <Image
                   loading="lazy"
                   src={"/assets/ssc-logo.svg"}
-                  objectFit="cover"
-                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  fill
                   alt="ssc-logo"
                 />
               </div>
@@ -510,11 +510,7 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:w-[60%] flex justify-between flex-col lg:flex-row  mt-8 sm:mt-0">
-            {/* <div className="flex gap-2 items-center text-[1.25rem]">
-            <LuMapPin />
-            <p>Silicon Institute of Technology, Sambalpur</p>
-          </div>
-          <p className="text-[1.25rem]">Organizer: Silicon Sports Club</p> */}
+           
             <div className="">
               <p className="font-[600] text-[1.25rem] underline">VENUE</p>
               <p className="text-[1.15rem] mt-2">
@@ -539,7 +535,7 @@ export default function Home() {
           <p className="text-white text-center text-[0.75rem]">
             &copy; 2025 Silicon Sports Club. All Rights Reserved.
           </p>
-        </div>
+        </div> */}
       </div>
 
       {showScrollToTop && (
