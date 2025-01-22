@@ -5,6 +5,7 @@ import { SidebarProvider } from "./components/SidebarContext";
 import Sidebar from "./components/Sidebar";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "ATHLON 2K25",
@@ -20,7 +21,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="google-site-verification" content="ironeutXhmCnTSBbPPyeJKxKZTWhqypUM8ssFKquPz8" />
+        <meta
+          name="google-site-verification"
+          content="ironeutXhmCnTSBbPPyeJKxKZTWhqypUM8ssFKquPz8"
+        />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-KQ2S7FV8V5"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KQ2S7FV8V5');
+`
+          }}
+        />
       </head>
       <body className="antialiased bg-[#eeeeee]">
         <Suspense fallback={<Loading />}>
