@@ -44,8 +44,7 @@ export default function Home() {
   return (
     <div className="">
       <div className={`${isSidebarOpen ? "overflow-hidden h-screen" : ""}`}>
-
-        <div className="h-full lg:h-[50dvh]  xl:h-[90dvh] mt-[6rem] xl:mt-16 bg-[#eeeeee] px-4 sm:px-8 xl:px-[5.5rem] block lg:flex sm:flex-row flex-col items-center justify-center">
+        <div className="h-full lg:h-[50dvh]  xl:h-[90dvh] mt-[8rem] xl:mt-16 bg-[#eeeeee] px-4 sm:px-8 xl:px-[5.5rem] block lg:flex sm:flex-row flex-col items-center justify-center">
           <div className="text-black flex-1">
             <p
               className="text-[1.5rem] sm:text-[1.5rem] font-[600] mb-2"
@@ -114,6 +113,7 @@ export default function Home() {
               className="absolute hidden sm:block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[10%] right-[30%] xl:top-[10%] xl:right-[24%] shadow-xl transition-transform duration-300 hover:translate-x-2"
             >
               <Image
+                loading="lazy"
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.15_ca606c93.jpg"
                 }
@@ -128,6 +128,7 @@ export default function Home() {
               className="absolute sm:hidden block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 shadow-xl transition-transform duration-300 hover:translate-x-2"
             >
               <Image
+                loading="lazy"
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"
                 }
@@ -142,6 +143,7 @@ export default function Home() {
               className="absolute sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[36%%] right-[56%] xl:top-[36%] xl:right-[45%] shadow-xl transition-transform duration-300 hover:translate-x-2"
             >
               <Image
+                loading="lazy"
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.12.16_523cf5d8.jpg"
                 }
@@ -156,6 +158,7 @@ export default function Home() {
               className="absolute sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[24%] right-0 xl:top-[24%] xl:right-[4%] shadow-xl transition-transform duration-300 hover:-translate-x-2"
             >
               <Image
+                loading="lazy"
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.11.49_9ec62461.jpg"
                 }
@@ -170,6 +173,7 @@ export default function Home() {
               className="absolute hidden sm:block sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[53%] right-[9%] xl:top-[53%] xl:right-[11%] shadow-xl transition-transform duration-300 hover:-translate-x-2"
             >
               <Image
+                loading="lazy"
                 src={
                   "/assets/WhatsApp Image 2025-01-15 at 01.11.50_706723a9.jpg"
                 }
@@ -184,6 +188,7 @@ export default function Home() {
               className="absolute sm:w-[12rem] sm:h-[16rem] w-[9rem] h-[13rem] rounded-xl bg-[#d6d6d6] top-[120%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 sm:hidden block shadow-xl "
             >
               <Image
+                loading="lazy"
                 src={
                   "https://i2-prod.irishmirror.ie/incoming/article30695458.ece/ALTERNATES/s615/2_inpho_02310494.jpg"
                 }
@@ -199,6 +204,7 @@ export default function Home() {
             className="md:hidden flex flex-1 items-center justify-center relative mt-16"
           >
             <Image
+              loading="lazy"
               src={"/assets/hero.svg"}
               width={500}
               height={500}
@@ -210,6 +216,7 @@ export default function Home() {
             className="hidden lg:hidden md:flex flex-1 items-center justify-center relative mt-16"
           >
             <Image
+              loading="lazy"
               src={"/assets/hero-md.svg"}
               width={600}
               height={600}
@@ -228,6 +235,7 @@ export default function Home() {
             className="xl:flex-1 w-full md:w-[40%] flex items-center justify-center"
           >
             <Image
+              loading="lazy"
               src={"/assets/ssc-logo.svg"}
               width={250}
               height={250}
@@ -268,6 +276,7 @@ export default function Home() {
                 >
                   <div className="w-[5.5rem] h-[5.5rem] relative overflow-hidden md:p-2 xl:p-0">
                     <Image
+                      loading="lazy"
                       src={organizer.image}
                       layout="fill"
                       objectFit="cover"
@@ -299,6 +308,7 @@ export default function Home() {
                   data-aos="flip-right"
                 >
                   <Image
+                    loading="lazy"
                     src={event.image}
                     layout="fill"
                     objectFit="cover"
@@ -350,6 +360,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={
                     "/assets/WhatsApp Image 2025-01-13 at 23.56.34_822d6132.jpg"
                   }
@@ -364,6 +375,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 15.22.58_b94fc2ff.jpg"
                   }
@@ -388,6 +400,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 01.11.48_6213fea4.jpg"
                   }
@@ -404,6 +417,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 10.26.12_d76a4ede.jpg"
                   }
@@ -436,6 +450,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative sm:mt-2 overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={"/assets/party.jpg"}
                   objectFit="cover"
                   layout="fill"
@@ -450,6 +465,7 @@ export default function Home() {
                 className="w-[10rem] h-[10rem] lg:w-[15rem] lg:h-[15rem] relative overflow-hidden"
               >
                 <Image
+                  loading="lazy"
                   src={
                     "/assets/WhatsApp Image 2025-01-15 at 01.12.16_1929ac55.jpg"
                   }
@@ -476,6 +492,7 @@ export default function Home() {
             <div className="flex gap-4 items-center md:flex-col lg:flex-row justify-around">
               <div className="h-[6rem] w-[6rem] lg:h-[8rem] lg:w-[8rem] flex items-center justify-center relative">
                 <Image
+                  loading="lazy"
                   src={"/assets/ssc-logo.svg"}
                   objectFit="cover"
                   layout="fill"
