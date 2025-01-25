@@ -64,6 +64,11 @@ export const organizers: {
     role: "Awards & Prizes"
   },
   {
+    name: "Tanisha Dutta",
+    image: "/assets/organizers/tanisha.jpg",
+    role: "Events & Competitions(girls)"
+  },
+  {
     name: "Prafful Pathak",
     image: "/assets/organizers/prafful.jpg",
     role: "Events & Competitions"
